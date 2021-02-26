@@ -7,8 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5882472D25E5FD5900FCD913 /* SYMonitorFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882472C25E5FD5900FCD913 /* SYMonitorFile.m */; };
+		5882473625E5FD8100FCD913 /* SYMonitorSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882473525E5FD8100FCD913 /* SYMonitorSQLite.m */; };
+		5882473C25E5FD9A00FCD913 /* SYMonitorTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882473B25E5FD9A00FCD913 /* SYMonitorTools.m */; };
+		5882474225E5FDB000FCD913 /* SYMonitorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882474125E5FDB000FCD913 /* SYMonitorView.m */; };
+		5882477225E6025700FCD913 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5882477125E6025700FCD913 /* libsqlite3.tbd */; };
+		5882477E25E6297200FCD913 /* SYMonitorCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882477D25E6297200FCD913 /* SYMonitorCrash.m */; };
+		5882479025E6665700FCD913 /* SYMonitorServe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882478F25E6665700FCD913 /* SYMonitorServe.m */; };
+		5882479F25E6732A00FCD913 /* BmobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5882479E25E6732A00FCD913 /* BmobSDK.framework */; };
+		588247A425E6734A00FCD913 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247A325E6734A00FCD913 /* CoreLocation.framework */; };
+		588247A625E6735100FCD913 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247A525E6735100FCD913 /* Security.framework */; };
+		588247A825E6735700FCD913 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247A725E6735700FCD913 /* CoreGraphics.framework */; };
+		588247AA25E6735D00FCD913 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247A925E6735D00FCD913 /* MobileCoreServices.framework */; };
+		588247AC25E6736200FCD913 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247AB25E6736200FCD913 /* CFNetwork.framework */; };
+		588247AE25E6736800FCD913 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247AD25E6736800FCD913 /* CoreTelephony.framework */; };
+		588247B025E6736F00FCD913 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247AF25E6736F00FCD913 /* SystemConfiguration.framework */; };
+		588247B225E6737600FCD913 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247B125E6737600FCD913 /* libz.1.2.5.tbd */; };
+		588247B725E6737E00FCD913 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247B625E6737E00FCD913 /* libicucore.tbd */; };
+		588247BC25E6738C00FCD913 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247BB25E6738B00FCD913 /* libc++.tbd */; };
+		588247C125E6739300FCD913 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588247C025E6739300FCD913 /* Photos.framework */; };
+		588247C725E6793100FCD913 /* MonitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 588247C625E6793100FCD913 /* MonitorViewController.m */; };
 		DFA125A925E46332008F4F5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA125A825E46332008F4F5C /* AppDelegate.m */; };
-		DFA125AC25E46332008F4F5C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA125AB25E46332008F4F5C /* SceneDelegate.m */; };
 		DFA125AF25E46332008F4F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA125AE25E46332008F4F5C /* ViewController.m */; };
 		DFA125B225E46332008F4F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA125B025E46332008F4F5C /* Main.storyboard */; };
 		DFA125B425E46339008F4F5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA125B325E46339008F4F5C /* Assets.xcassets */; };
@@ -36,11 +55,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5882472B25E5FD5900FCD913 /* SYMonitorFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMonitorFile.h; sourceTree = "<group>"; };
+		5882472C25E5FD5900FCD913 /* SYMonitorFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMonitorFile.m; sourceTree = "<group>"; };
+		5882473425E5FD8100FCD913 /* SYMonitorSQLite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMonitorSQLite.h; sourceTree = "<group>"; };
+		5882473525E5FD8100FCD913 /* SYMonitorSQLite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMonitorSQLite.m; sourceTree = "<group>"; };
+		5882473A25E5FD9A00FCD913 /* SYMonitorTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMonitorTools.h; sourceTree = "<group>"; };
+		5882473B25E5FD9A00FCD913 /* SYMonitorTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMonitorTools.m; sourceTree = "<group>"; };
+		5882474025E5FDB000FCD913 /* SYMonitorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMonitorView.h; sourceTree = "<group>"; };
+		5882474125E5FDB000FCD913 /* SYMonitorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMonitorView.m; sourceTree = "<group>"; };
+		5882476925E6011800FCD913 /* SYMonitorDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMonitorDefine.h; sourceTree = "<group>"; };
+		5882477125E6025700FCD913 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5882477C25E6297200FCD913 /* SYMonitorCrash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMonitorCrash.h; sourceTree = "<group>"; };
+		5882477D25E6297200FCD913 /* SYMonitorCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMonitorCrash.m; sourceTree = "<group>"; };
+		5882478E25E6665700FCD913 /* SYMonitorServe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMonitorServe.h; sourceTree = "<group>"; };
+		5882478F25E6665700FCD913 /* SYMonitorServe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMonitorServe.m; sourceTree = "<group>"; };
+		5882479E25E6732A00FCD913 /* BmobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobSDK.framework; sourceTree = "<group>"; };
+		588247A325E6734A00FCD913 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		588247A525E6735100FCD913 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		588247A725E6735700FCD913 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		588247A925E6735D00FCD913 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		588247AB25E6736200FCD913 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		588247AD25E6736800FCD913 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		588247AF25E6736F00FCD913 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		588247B125E6737600FCD913 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		588247B625E6737E00FCD913 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		588247BB25E6738B00FCD913 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		588247C025E6739300FCD913 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		588247C525E6793100FCD913 /* MonitorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorViewController.h; sourceTree = "<group>"; };
+		588247C625E6793100FCD913 /* MonitorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorViewController.m; sourceTree = "<group>"; };
 		DFA125A425E46332008F4F5C /* DemoMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA125A725E46332008F4F5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DFA125A825E46332008F4F5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DFA125AA25E46332008F4F5C /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		DFA125AB25E46332008F4F5C /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		DFA125AD25E46332008F4F5C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		DFA125AE25E46332008F4F5C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DFA125B125E46332008F4F5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +106,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				588247C125E6739300FCD913 /* Photos.framework in Frameworks */,
+				588247BC25E6738C00FCD913 /* libc++.tbd in Frameworks */,
+				5882477225E6025700FCD913 /* libsqlite3.tbd in Frameworks */,
+				588247B725E6737E00FCD913 /* libicucore.tbd in Frameworks */,
+				588247B225E6737600FCD913 /* libz.1.2.5.tbd in Frameworks */,
+				588247B025E6736F00FCD913 /* SystemConfiguration.framework in Frameworks */,
+				588247AE25E6736800FCD913 /* CoreTelephony.framework in Frameworks */,
+				588247AC25E6736200FCD913 /* CFNetwork.framework in Frameworks */,
+				588247AA25E6735D00FCD913 /* MobileCoreServices.framework in Frameworks */,
+				588247A825E6735700FCD913 /* CoreGraphics.framework in Frameworks */,
+				588247A625E6735100FCD913 /* Security.framework in Frameworks */,
+				588247A425E6734A00FCD913 /* CoreLocation.framework in Frameworks */,
+				5882479F25E6732A00FCD913 /* BmobSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +139,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5882472A25E5FD1500FCD913 /* SYMonitorTools */ = {
+			isa = PBXGroup;
+			children = (
+				5882478B25E6664900FCD913 /* MonitorServe */,
+				5882472B25E5FD5900FCD913 /* SYMonitorFile.h */,
+				5882472C25E5FD5900FCD913 /* SYMonitorFile.m */,
+				5882473425E5FD8100FCD913 /* SYMonitorSQLite.h */,
+				5882473525E5FD8100FCD913 /* SYMonitorSQLite.m */,
+				5882473A25E5FD9A00FCD913 /* SYMonitorTools.h */,
+				5882473B25E5FD9A00FCD913 /* SYMonitorTools.m */,
+				5882474025E5FDB000FCD913 /* SYMonitorView.h */,
+				5882474125E5FDB000FCD913 /* SYMonitorView.m */,
+				5882477C25E6297200FCD913 /* SYMonitorCrash.h */,
+				5882477D25E6297200FCD913 /* SYMonitorCrash.m */,
+				5882476925E6011800FCD913 /* SYMonitorDefine.h */,
+			);
+			name = SYMonitorTools;
+			path = ../../SYMonitorTools;
+			sourceTree = "<group>";
+		};
+		5882477025E6025700FCD913 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				588247C025E6739300FCD913 /* Photos.framework */,
+				588247BB25E6738B00FCD913 /* libc++.tbd */,
+				588247B625E6737E00FCD913 /* libicucore.tbd */,
+				588247B125E6737600FCD913 /* libz.1.2.5.tbd */,
+				588247AF25E6736F00FCD913 /* SystemConfiguration.framework */,
+				588247AD25E6736800FCD913 /* CoreTelephony.framework */,
+				588247AB25E6736200FCD913 /* CFNetwork.framework */,
+				588247A925E6735D00FCD913 /* MobileCoreServices.framework */,
+				588247A725E6735700FCD913 /* CoreGraphics.framework */,
+				588247A525E6735100FCD913 /* Security.framework */,
+				588247A325E6734A00FCD913 /* CoreLocation.framework */,
+				5882477125E6025700FCD913 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5882478B25E6664900FCD913 /* MonitorServe */ = {
+			isa = PBXGroup;
+			children = (
+				5882478E25E6665700FCD913 /* SYMonitorServe.h */,
+				5882478F25E6665700FCD913 /* SYMonitorServe.m */,
+			);
+			path = MonitorServe;
+			sourceTree = "<group>";
+		};
+		5882479D25E6732A00FCD913 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				5882479E25E6732A00FCD913 /* BmobSDK.framework */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
 		DFA1259B25E46332008F4F5C = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +202,7 @@
 				DFA125C225E4633A008F4F5C /* DemoMonitorTests */,
 				DFA125CD25E4633A008F4F5C /* DemoMonitorUITests */,
 				DFA125A525E46332008F4F5C /* Products */,
+				5882477025E6025700FCD913 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,10 +221,12 @@
 			children = (
 				DFA125A725E46332008F4F5C /* AppDelegate.h */,
 				DFA125A825E46332008F4F5C /* AppDelegate.m */,
-				DFA125AA25E46332008F4F5C /* SceneDelegate.h */,
-				DFA125AB25E46332008F4F5C /* SceneDelegate.m */,
 				DFA125AD25E46332008F4F5C /* ViewController.h */,
 				DFA125AE25E46332008F4F5C /* ViewController.m */,
+				588247C525E6793100FCD913 /* MonitorViewController.h */,
+				588247C625E6793100FCD913 /* MonitorViewController.m */,
+				5882479D25E6732A00FCD913 /* SDK */,
+				5882472A25E5FD1500FCD913 /* SYMonitorTools */,
 				DFA125B025E46332008F4F5C /* Main.storyboard */,
 				DFA125B325E46339008F4F5C /* Assets.xcassets */,
 				DFA125B525E46339008F4F5C /* LaunchScreen.storyboard */,
@@ -267,10 +384,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5882477E25E6297200FCD913 /* SYMonitorCrash.m in Sources */,
+				5882473C25E5FD9A00FCD913 /* SYMonitorTools.m in Sources */,
+				5882474225E5FDB000FCD913 /* SYMonitorView.m in Sources */,
+				588247C725E6793100FCD913 /* MonitorViewController.m in Sources */,
+				5882472D25E5FD5900FCD913 /* SYMonitorFile.m in Sources */,
 				DFA125AF25E46332008F4F5C /* ViewController.m in Sources */,
+				5882473625E5FD8100FCD913 /* SYMonitorSQLite.m in Sources */,
 				DFA125A925E46332008F4F5C /* AppDelegate.m in Sources */,
 				DFA125BA25E46339008F4F5C /* main.m in Sources */,
-				DFA125AC25E46332008F4F5C /* SceneDelegate.m in Sources */,
+				5882479025E6665700FCD913 /* SYMonitorServe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,14 +562,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 9YWJ3PZHZG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DemoMonitor/SDK",
+				);
 				INFOPLIST_FILE = DemoMonitor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.devZhang.DemoMonitor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.byd.DemoMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = DevelopmentProfileWildcard;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -455,14 +585,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 9YWJ3PZHZG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DemoMonitor/SDK",
+				);
 				INFOPLIST_FILE = DemoMonitor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.devZhang.DemoMonitor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.byd.DemoMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = DevelopmentProfileWildcard;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
