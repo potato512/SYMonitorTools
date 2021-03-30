@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58433F8325EFC39200035A14 /* SYMonitorBattery.m in Sources */ = {isa = PBXBuildFile; fileRef = 58433F8225EFC39200035A14 /* SYMonitorBattery.m */; };
 		5882472D25E5FD5900FCD913 /* SYMonitorFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882472C25E5FD5900FCD913 /* SYMonitorFile.m */; };
 		5882473625E5FD8100FCD913 /* SYMonitorSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882473525E5FD8100FCD913 /* SYMonitorSQLite.m */; };
 		5882473C25E5FD9A00FCD913 /* SYMonitorTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882473B25E5FD9A00FCD913 /* SYMonitorTools.m */; };
@@ -55,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58433F8125EFC39200035A14 /* SYMonitorBattery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMonitorBattery.h; sourceTree = "<group>"; };
+		58433F8225EFC39200035A14 /* SYMonitorBattery.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMonitorBattery.m; sourceTree = "<group>"; };
 		5882472B25E5FD5900FCD913 /* SYMonitorFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMonitorFile.h; sourceTree = "<group>"; };
 		5882472C25E5FD5900FCD913 /* SYMonitorFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYMonitorFile.m; sourceTree = "<group>"; };
 		5882473425E5FD8100FCD913 /* SYMonitorSQLite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYMonitorSQLite.h; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 				5882477C25E6297200FCD913 /* SYMonitorCrash.h */,
 				5882477D25E6297200FCD913 /* SYMonitorCrash.m */,
 				5882476925E6011800FCD913 /* SYMonitorDefine.h */,
+				58433F8125EFC39200035A14 /* SYMonitorBattery.h */,
+				58433F8225EFC39200035A14 /* SYMonitorBattery.m */,
 			);
 			name = SYMonitorTools;
 			path = ../../SYMonitorTools;
@@ -387,6 +392,7 @@
 				5882477E25E6297200FCD913 /* SYMonitorCrash.m in Sources */,
 				5882473C25E5FD9A00FCD913 /* SYMonitorTools.m in Sources */,
 				5882474225E5FDB000FCD913 /* SYMonitorView.m in Sources */,
+				58433F8325EFC39200035A14 /* SYMonitorBattery.m in Sources */,
 				588247C725E6793100FCD913 /* MonitorViewController.m in Sources */,
 				5882472D25E5FD5900FCD913 /* SYMonitorFile.m in Sources */,
 				DFA125AF25E46332008F4F5C /* ViewController.m in Sources */,

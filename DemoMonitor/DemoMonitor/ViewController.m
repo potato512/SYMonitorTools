@@ -13,6 +13,7 @@
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray *array;
+@property (nonatomic, strong) UILabel *label;
 
 @end
 
@@ -65,7 +66,12 @@
 
 - (void)logClick
 {
-
+    NSArray *array = [SYMonitorTools.share refreshMonitor];
+    NSMutableString *text = [[NSMutableString alloc] init];
+    for (SYMonitorModel *model in array) {
+        [text appendFormat:@"%@,%ld,%@,%@\n", model.time, model.type, model.typeName, model.content];
+    }
+    self.label.text = text;
 }
 
 #pragma mark - crash
@@ -77,6 +83,10 @@
     table.delegate = self;
     table.dataSource = self;
     table.tableFooterView = [UIView new];
+    //
+    self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, table.frame.size.width, 100)];
+    self.label.numberOfLines = 0;
+    table.tableHeaderView = self.label;
 }
 
 - (NSArray *)array

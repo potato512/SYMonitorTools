@@ -16,72 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "callback(param, f_num, f_value, f_name)"
+            landmarkName = "sqlCallback(param, f_num, f_value, f_name)"
             landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "91409E6C-6262-4EB2-AF38-DB67CA4FEF69"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../SYMonitorTools/SYMonitorFile.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "-read:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "91409E6C-6262-4EB2-AF38-DB67CA4FEF69 - b69aa65c18fba28d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SYMonitorFile read:]"
-                  moduleName = "DemoMonitor"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devzhang/Desktop/zsy/code/github/SYMonitorTools/SYMonitorTools/SYMonitorFile.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "149"
-                  endingLineNumber = "149"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  uuid = "91409E6C-6262-4EB2-AF38-DB67CA4FEF69 - 47d48bd8aaa2cb64"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__22-[SYMonitorFile read:]_block_invoke"
-                  moduleName = "DemoMonitor"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devzhang/Desktop/zsy/code/github/SYMonitorTools/SYMonitorTools/SYMonitorFile.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "150"
-                  endingLineNumber = "150"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DC358A8F-EE23-453B-A81C-F09CFB7EAA31"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../SYMonitorTools/SYMonitorFile.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "-read:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

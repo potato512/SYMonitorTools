@@ -19,7 +19,10 @@
 @interface SYMonitorTools ()
 
 @property (nonatomic, strong) SYMonitorFile *monitorFile;
+//
 @property (nonatomic, strong) SYMonitorCrash *monitorCrash;
+@property (nonatomic, strong) SYMonitorBattery *monitorBattery;
+//
 @property (nonatomic, strong) SYMonitorServe *monitorServe;
 
 @end
@@ -56,6 +59,20 @@
     [self.monitorCrash catchCrash];
     [self.monitorServe serveInitialize];
 }
+
+- (NSArray <SYMonitorModel *>*)refreshMonitor
+{
+    if (!self.config.enable) {
+        return @[];
+    }
+    
+    NSInteger battery = self.monitorBattery.monitorBattery;
+    NSLog(@"battery = %ld", battery);
+    SYMonitorModel *modelBattery = [[SYMonitorModel alloc] initWithContent:[NSString stringWithFormat:@"%ld", battery] title:@"耗电量" type:0];
+    NSArray *array = @[modelBattery];
+    return array;
+}
+
 
 #pragma mark 文件管理
 
@@ -97,6 +114,17 @@
     return _monitorCrash;
 }
 
+#pragma mark 耗电量
+
+- (SYMonitorBattery *)monitorBattery
+{
+    if (_monitorBattery == nil) {
+        _monitorBattery = [[SYMonitorBattery alloc] init];
+    }
+    return _monitorBattery;
+}
+
+
 #pragma mark 记录
 
 void SYMonitorSave(SYMonitorType type, NSString *title, NSString *text)
@@ -125,7 +153,7 @@ void SYMonitorRead(SYMonitorReadHandle handle)
 
 - (void)monitorSend
 {
-    if (!SYMonitorTools.share.config.enable) {
+    if (!self.config.enable) {
         return;
     }
     

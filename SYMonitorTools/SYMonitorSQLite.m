@@ -79,7 +79,7 @@
     }
 }
 
-int callback(void *param, int f_num, char **f_value, char **f_name)
+int sqlCallback(void *param, int f_num, char **f_value, char **f_name)
 {
     printf("%s:这是回调函数!\n", __FUNCTION__);
     return 0;
@@ -92,7 +92,7 @@ int callback(void *param, int f_num, char **f_value, char **f_name)
         if ([self isValidSQL:sqlString]) {
             if (self.openSQLite) {
                 char *errorMsg;
-                int execStatus = sqlite3_exec(dataBase, sqlString.UTF8String, callback, NULL, &errorMsg);
+                int execStatus = sqlite3_exec(dataBase, sqlString.UTF8String, sqlCallback, NULL, &errorMsg);
                 if (execStatus == SQLITE_OK) {
                     result = YES;
                 } else {

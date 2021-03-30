@@ -13,11 +13,11 @@
 
 - (void)catchCrash
 {
-    NSSetUncaughtExceptionHandler(&readException);
+    NSSetUncaughtExceptionHandler(&MonitorCrashException);
 }
 
 // 获得异常的C函数
-void readException(NSException *exception)
+void MonitorCrashException(NSException *exception)
 {
     // 设备信息
     NSString *deviceModel = kMonitorDeviceModel;
