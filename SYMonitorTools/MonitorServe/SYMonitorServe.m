@@ -11,6 +11,7 @@
 #import "BmobSDK.framework/Headers/Bmob.h"
 
 static NSString *const kAppKey = @"e9d47506a346a6f118c0d38346d7498b";
+static NSString *const kAppDomin = @"https://open-vip.bmob.cn";
 
 #pragma mark - 数据model
 
@@ -74,17 +75,25 @@ static NSString *const kAppKey = @"e9d47506a346a6f118c0d38346d7498b";
 
 @interface SYMonitorServe ()
 
-@property (nonatomic, strong) NSString *serveTable;
-
 @end
 
 @implementation SYMonitorServe
+
++ (instancetype)share
+{
+    static SYMonitorServe *manager;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [[self alloc] init];
+    });
+    return manager;
+}
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        
+        [self serveInitialize];
     }
     return self;
 }
@@ -96,33 +105,42 @@ NSString *logValidText(NSString *text)
     }
     return @"--";
 }
-
-- (NSString *)serveTable
+- (NSString *)logTableName:(NSString *)defaultTable
 {
-    if (_serveTable == nil) {
-        NSArray *array = [kMonitorAppIdentifier componentsSeparatedByString:@"."];
-        NSMutableString *text = [[NSMutableString alloc] init];
-        for (NSString *string in array) {
-            NSString *tmp = string.capitalizedString;
-            [text appendString:tmp];
-        }
-        [text appendString:@"Table"];
-        if (text.length > 20) {
-            text = (NSMutableString *)[text substringFromIndex:(text.length - 20)];
-        }
-        _serveTable = [NSString stringWithString:text];
+    NSAssert(defaultTable != nil, @"表名不能为空，且小于20个字符");
+    NSString *table = defaultTable;
+    if (table == nil || table.length <= 0) {
+        //
+        return nil;
+        
+//        NSArray *array = [kMonitorAppIdentifier componentsSeparatedByString:@"."];
+//        NSMutableString *text = [[NSMutableString alloc] init];
+//        for (NSString *string in array) {
+//            NSString *tmp = string.capitalizedString;
+//            [text appendString:tmp];
+//        }
+//        [text appendString:@"Table"];
+//        if (text.length > 20) {
+//            text = (NSMutableString *)[text substringFromIndex:(text.length - 20)];
+//        }
+//        table = [NSString stringWithString:text];
     }
-    return _serveTable;
+    return table;
 }
 
 /// 初始化
 - (void)serveInitialize
 {
+    // SDK初始化
     [Bmob registerWithAppKey:kAppKey];
+    // 数据SDK重新设置请求域名的Api
+    [Bmob resetDomain:kAppDomin];
 }
 
-/// 保存数据
-- (void)serveSaveWithModel:(SYServerModel *)model complete:(void (^)(BOOL isSuccessful, NSError *error))complete
+#pragma mark 数据处理
+
+/// 保存数据（表名）
+- (void)serveSaveWithModel:(SYServerModel *)model table:(NSString *)tableName complete:(void (^)(BOOL isSuccessful, NSError *error))complete
 {
     if (model == nil) {
         if (complete) {
@@ -132,7 +150,8 @@ NSString *logValidText(NSString *text)
     }
     
     // 在 包名_table 创建一条数据，如果当前没 AppCrashTable 表，则会创建 包名_table 表
-    BmobObject *crashObject = [BmobObject objectWithClassName:self.serveTable];
+    NSString *table = [self logTableName:tableName];
+    BmobObject *object = [BmobObject objectWithClassName:table];
     // 保存信息
     NSString *logAppName = model.logAppName;
     NSString *logAppVersion = model.logAppVersion;
@@ -146,30 +165,30 @@ NSString *logValidText(NSString *text)
     NSString *logTitle = model.logTitle;
     NSString *logMessage = model.logMessage;
     //
-    [crashObject setObject:logValidText(logAppName) forKey:@"logAppName"];
-    [crashObject setObject:logValidText(logAppVersion) forKey:@"logAppVersion"];
-    [crashObject setObject:logValidText(logDeviceType) forKey:@"logDeviceType"];
-    [crashObject setObject:logValidText(logDeviceSystem) forKey:@"logDeviceSystem"];
-    [crashObject setObject:logValidText(logDeviceSystemV) forKey:@"logDeviceSystemV"];
-    [crashObject setObject:logValidText(logUploadTime) forKey:@"logUploadTime"];
-    [crashObject setObject:logValidText(logMessage) forKey:@"logMessage"];
-    [crashObject setObject:logValidText(logDeviceName) forKey:@"logDeviceName"];
-    [crashObject setObject:logValidText(logType) forKey:@"logType"];
-    [crashObject setObject:logValidText(logTime) forKey:@"logTime"];
-    [crashObject setObject:logValidText(logTitle) forKey:@"logTitle"];
-    [crashObject setObject:logValidText(@"") forKey:@"logMark"];
-    [crashObject setObject:logValidText(@"1") forKey:@"logState"];
+    [object setObject:logValidText(logAppName) forKey:@"logAppName"];
+    [object setObject:logValidText(logAppVersion) forKey:@"logAppVersion"];
+    [object setObject:logValidText(logDeviceType) forKey:@"logDeviceType"];
+    [object setObject:logValidText(logDeviceSystem) forKey:@"logDeviceSystem"];
+    [object setObject:logValidText(logDeviceSystemV) forKey:@"logDeviceSystemV"];
+    [object setObject:logValidText(logUploadTime) forKey:@"logUploadTime"];
+    [object setObject:logValidText(logMessage) forKey:@"logMessage"];
+    [object setObject:logValidText(logDeviceName) forKey:@"logDeviceName"];
+    [object setObject:logValidText(logType) forKey:@"logType"];
+    [object setObject:logValidText(logTime) forKey:@"logTime"];
+    [object setObject:logValidText(logTitle) forKey:@"logTitle"];
+    [object setObject:logValidText(@"") forKey:@"logMark"];
+    [object setObject:logValidText(@"1") forKey:@"logState"];
     
     // 异步保存到服务器
-    [crashObject saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+    [object saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
         if (complete) {
             complete(isSuccessful, error);
         }
     }];
 }
 
-/// 修改数据（更新备注）
-- (void)serveUpdateWithModel:(SYServerModel *)model complete:(void (^)(BOOL isSuccessful, NSError *error))complete
+/// 修改数据（更新备注，表名）
+- (void)serveUpdateWithModel:(SYServerModel *)model table:(NSString *)tableName complete:(void (^)(BOOL isSuccessful, NSError *error))complete
 {
     if (model == nil) {
         if (complete) {
@@ -179,7 +198,8 @@ NSString *logValidText(NSString *text)
     }
    
     // 查找 包名_table 表
-    BmobQuery *bquery = [BmobQuery queryWithClassName:self.serveTable];
+    NSString *table = [self logTableName:tableName];
+    BmobQuery *bquery = [BmobQuery queryWithClassName:table];
     // 查找 包名_table 表里面id为 model.logID 的数据
     [bquery getObjectInBackgroundWithId:model.logID block:^(BmobObject *object, NSError *error){
       // 没有返回错误
@@ -203,12 +223,12 @@ NSString *logValidText(NSString *text)
       }
     }];
 }
-
-/// 获取数据
-- (void)serveReadWithPage:(NSInteger)page size:(NSInteger)size complete:(void (^)(NSArray <SYServerModel *>*array, NSError *error))complete
+/// 获取数据（表名）
+- (void)serveReadWithPage:(NSInteger)page size:(NSInteger)size table:(NSString *)tableName  complete:(void (^)(NSArray <SYServerModel *>*array, NSError *error))complete
 {
     // 查找 包名_table 表的数据
-    BmobQuery *cacheBquery = [BmobQuery queryWithClassName:self.serveTable];
+    NSString *table = [self logTableName:tableName];
+    BmobQuery *cacheBquery = [BmobQuery queryWithClassName:table];
     // 分页查询
     cacheBquery.limit = size;
     cacheBquery.skip = ((page - 1) * size);
@@ -253,6 +273,116 @@ NSString *logValidText(NSString *text)
             complete(list, error);
         }
     }];
+}
+/// 删除数据（表名）
+- (void)serveDeleteWith:(SYServerModel *)model table:(NSString *)tableName complete:(void (^)(BOOL isSuccessful, NSError *error))complete
+{
+    
+}
+
+#pragma mark 文件管理
+
+/// 保存文件（表名）
+- (void)serveSaveWithFilePath:(NSString *)filePath table:(NSString *)tableName progress:(void (^)(int index, float progress))uploadProgress complete:(void (^)(BOOL isSuccessful, NSError *error))complete
+{
+    if (filePath == nil || filePath.length <= 0) {
+        if (complete) {
+            complete(NO, nil);
+        }
+        return;
+    }
+    
+    NSArray *filePaths = @[filePath];
+    [BmobFile filesUploadBatchWithPaths:filePaths progressBlock:^(int index, float progress) {
+        if (uploadProgress) {
+            uploadProgress(index, progress);
+        }
+    } resultBlock:^(NSArray *array, BOOL isSuccessful, NSError *error) {
+        if (isSuccessful) {
+            // 存放文件URL的数组
+            BmobFile *file = array.lastObject;
+            NSString *fileUrlPath = file.url;
+            //
+            // 上传 应用名称
+            NSString *logAppName = [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleDisplayName"];
+            // 上传 应用版本
+            NSString *logAppVersion = [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleShortVersionString"];
+            // 上传 日志时间
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = @"yyyy年MM月dd日 HH:mm";
+            NSString *logTime = [formatter stringFromDate:NSDate.date];
+            // 上传 设备类型（1 iPhone，2 Android）
+            NSString *logDeviceType = @"1";
+            // 上传 设备系统（iOS，Android）
+            NSString *logDeviceSystem = UIDevice.currentDevice.systemName;
+            // 上传 设备系统版本，如：iOS14
+            NSString *logDeviceSystemV = UIDevice.currentDevice.systemVersion;
+            // 上传 设备名称
+            NSString *logDeviceName = UIDevice.currentDevice.name;
+            //
+            SYServerModel *model = [[SYServerModel alloc] init];
+            model.logAppName = logAppName;
+            model.logAppVersion = logAppVersion;
+            model.logUploadTime = logTime;
+            model.logDeviceType = logDeviceType;
+            model.logDeviceSystem = logDeviceSystem;
+            model.logDeviceSystemV = logDeviceSystemV;
+            model.logDeviceName = logDeviceName;
+            model.logType = @"";
+            model.logTime = @"";
+            model.logTitle = [NSString stringWithFormat:@"操作日志"];
+            model.logMessage = fileUrlPath;
+            //
+            [self serveSaveWithModel:model table:tableName complete:complete];
+        } else {
+            if (complete) {
+                complete(isSuccessful, error);
+            }
+        }
+    }];
+}
+
+/// 获取文件（表名）
+- (void)serveReadFileWithModel:(SYServerModel *)model table:(NSString *)tableName complete:(void (^)(id file, NSError *error))complete
+{
+    if (model == nil) {
+        if (complete) {
+            complete(nil, nil);
+        }
+        return;
+    }
+    
+    NSString *talbe = [self logTableName:tableName];
+    NSString *fileId = model.logID;
+    //
+    BmobQuery *query = [BmobQuery queryWithClassName:talbe];
+    [query getObjectInBackgroundWithId:fileId block:^(BmobObject *object, NSError *error) {
+        if (complete) {
+            BmobFile *file = (BmobFile *)[object objectForKey:@"filetype"];
+            NSLog(@"%@",file.url);
+            //
+            complete(object, error);
+        }
+    }];
+}
+
+/// 删除文件
+- (void)serveDeleteFileWithModel:(SYServerModel *)model table:(NSString *)tableName complete:(void (^)(BOOL isSuccessful, NSError *error))complete
+{
+    if (model == nil) {
+        if (complete) {
+            complete(nil, nil);
+        }
+        return;
+    }
+    
+//    NSString *talbe = logTableName(tableName);
+//    NSString *fileId = model.logID;
+//    //
+//    BmobObject *obj = [[BmobObject alloc] initWithClassName:talbe];
+//    [obj deleteInBackgroundWithBlock:^(BOOL isSuccessful, NSError *error) {
+//
+//    }];
 }
 
 @end

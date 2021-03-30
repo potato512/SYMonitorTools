@@ -9,10 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SYMonitorDefine.h"
 #import "SYMonitorFile.h"
-//
 #import "SYMonitorCrash.h"
-#import "SYMonitorBattery.h"
-//
 #import "SYMonitorServe.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -25,6 +22,10 @@ typedef void(^SYMonitorReadHandle)(NSArray <SYMonitorModel *>*array);
 
 /// 开启功能
 @property (nonatomic, assign) BOOL enable;
+/// 开启自动发送
+@property (nonatomic, assign) BOOL autoSend;
+/// 崩溃表名
+@property (nonatomic, strong) NSString *crashTable;
 
 @end
 
@@ -36,8 +37,6 @@ typedef void(^SYMonitorReadHandle)(NSArray <SYMonitorModel *>*array);
 
 /// 配置
 @property (nonatomic, strong) SYMonitorConfig *config;
-
-- (NSArray <SYMonitorModel *>*)refreshMonitor;
 
 #pragma mark 记录
 
@@ -55,18 +54,3 @@ void SYMonitorRead(SYMonitorReadHandle handle);
 @end
 
 NS_ASSUME_NONNULL_END
-
-/*
- 导入头文件
- #import "SYMonitorTools.h"
- 
- 初始化配置
- SYMonitorConfig *config = [SYMonitorConfig new];
- config.enable = YES;
- SYMonitorTools.share.config = config;
- 
- 上传信息
- [SYMonitorTools.share monitorSend];
- 
- 
- */

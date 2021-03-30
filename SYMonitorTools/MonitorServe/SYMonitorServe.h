@@ -57,18 +57,34 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYMonitorServe : NSObject
 
++ (instancetype)share;
 - (instancetype)init;
 
-/// 初始化
-- (void)serveInitialize;
+@property (nonatomic, strong) NSString *crashTable;
+@property (nonatomic, strong) NSString *logTable;
 
-/// 保存数据
-- (void)serveSaveWithModel:(SYServerModel *)model complete:(void (^)(BOOL isSuccessful, NSError *error))complete;
-/// 修改数据（更新备注）
-- (void)serveUpdateWithModel:(SYServerModel *)model complete:(void (^)(BOOL isSuccessful, NSError *error))complete;
+#pragma mark 数据处理
 
-/// 获取数据
-- (void)serveReadWithPage:(NSInteger)page size:(NSInteger)size complete:(void (^)(NSArray <SYServerModel *>*array, NSError *error))complete;
+/// 保存数据（表名）
+- (void)serveSaveWithModel:(SYServerModel *)model table:(NSString *)tableName complete:(void (^)(BOOL isSuccessful, NSError *error))complete;
+
+/// 修改数据（更新备注，表名）
+- (void)serveUpdateWithModel:(SYServerModel *)model table:(NSString *)tableName complete:(void (^)(BOOL isSuccessful, NSError *error))complete;
+/// 获取数据（表名）
+- (void)serveReadWithPage:(NSInteger)page size:(NSInteger)size table:(NSString *)tableName  complete:(void (^)(NSArray <SYServerModel *>*array, NSError *error))complete;
+/// 删除数据（表名）
+- (void)serveDeleteWith:(SYServerModel *)model table:(NSString *)tableName complete:(void (^)(BOOL isSuccessful, NSError *error))complete;
+
+#pragma mark 文件管理
+
+/// 保存文件（表名）
+- (void)serveSaveWithFilePath:(NSString *)filePath table:(NSString *)tableName progress:(void (^)(int index, float progress))uploadProgress complete:(void (^)(BOOL isSuccessful, NSError *error))complete;
+
+/// 获取文件（表名）
+- (void)serveReadFileWithModel:(SYServerModel *)model table:(NSString *)tableName complete:(void (^)(id file, NSError *error))complete;
+
+/// 删除文件
+- (void)serveDeleteFileWithModel:(SYServerModel *)model table:(NSString *)tableName complete:(void (^)(BOOL isSuccessful, NSError *error))complete;
 
 @end
 

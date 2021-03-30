@@ -96,7 +96,7 @@ int sqlCallback(void *param, int f_num, char **f_value, char **f_name)
                 if (execStatus == SQLITE_OK) {
                     result = YES;
                 } else {
-                    NSLog(@"[%@]执行失败：%s", [sqlString substringToIndex:20], errorMsg);
+                    NSLog(@"[%@]---执行失败：%s", [sqlString substringToIndex:20], errorMsg);
                 }
                 [self closeSQLite];
             }

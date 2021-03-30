@@ -19,11 +19,6 @@
 @interface SYMonitorTools ()
 
 @property (nonatomic, strong) SYMonitorFile *monitorFile;
-//
-@property (nonatomic, strong) SYMonitorCrash *monitorCrash;
-@property (nonatomic, strong) SYMonitorBattery *monitorBattery;
-//
-@property (nonatomic, strong) SYMonitorServe *monitorServe;
 
 @end
 
@@ -56,23 +51,14 @@
         return;
     }
     
-    [self.monitorCrash catchCrash];
-    [self.monitorServe serveInitialize];
-}
-
-- (NSArray <SYMonitorModel *>*)refreshMonitor
-{
-    if (!self.config.enable) {
-        return @[];
-    }
+//    NSSetUncaughtExceptionHandler(&readMonitorCrashException);
+    SYMonitorCrashInitialize();
     
-    NSInteger battery = self.monitorBattery.monitorBattery;
-    NSLog(@"battery = %ld", battery);
-    SYMonitorModel *modelBattery = [[SYMonitorModel alloc] initWithContent:[NSString stringWithFormat:@"%ld", battery] title:@"耗电量" type:0];
-    NSArray *array = @[modelBattery];
-    return array;
+    // 是否自动发送
+    if (_config.autoSend) {
+        [self monitorSend];
+    }
 }
-
 
 #pragma mark 文件管理
 
@@ -106,23 +92,6 @@
 
 #pragma mark 闪退
 
-- (SYMonitorCrash *)monitorCrash
-{
-    if (_monitorCrash == nil) {
-        _monitorCrash = [[SYMonitorCrash alloc] init];
-    }
-    return _monitorCrash;
-}
-
-#pragma mark 耗电量
-
-- (SYMonitorBattery *)monitorBattery
-{
-    if (_monitorBattery == nil) {
-        _monitorBattery = [[SYMonitorBattery alloc] init];
-    }
-    return _monitorBattery;
-}
 
 
 #pragma mark 记录
@@ -143,17 +112,9 @@ void SYMonitorRead(SYMonitorReadHandle handle)
 
 #pragma mark 服务管理
 
-- (SYMonitorServe *)monitorServe
-{
-    if (_monitorServe == nil) {
-        _monitorServe = [[SYMonitorServe alloc] init];
-    }
-    return _monitorServe;
-}
-
 - (void)monitorSend
 {
-    if (!self.config.enable) {
+    if (!SYMonitorTools.share.config.enable) {
         return;
     }
     
@@ -176,7 +137,9 @@ void SYMonitorRead(SYMonitorReadHandle handle)
     // 上传 日志信息
     __weak SYMonitorTools *weak = self;
     [self.monitorFile read:^(NSArray<SYMonitorModel *> * _Nonnull array) {
-        NSLog(@"日志上传：%@", array.count <= 0 ? @"没有记录" : [NSString stringWithFormat:@"有 %ld 条记录", array.count]);
+#ifdef DEBUG
+        NSLog(@"日志崩溃上传：%@", array.count <= 0 ? @"没有崩溃记录" : [NSString stringWithFormat:@"有 %ld 条崩溃记录", array.count]);
+#endif
         //
         for (SYMonitorModel *modelCache in array) {
             NSString *type = [NSString stringWithFormat:@"%ld", modelCache.type];
@@ -197,11 +160,13 @@ void SYMonitorRead(SYMonitorReadHandle handle)
             model.logTitle = title;
             model.logMessage = content;
             //
-            [weak.monitorServe serveSaveWithModel:model complete:^(BOOL isSuccessful, NSError * _Nonnull error) {
+            [SYMonitorServe.share serveSaveWithModel:model table:self.config.crashTable complete:^(BOOL isSuccessful, NSError * _Nonnull error) {
                 if (isSuccessful) {
                     [weak.monitorFile clearWithKey:time];
                 }
-                NSLog(@"crash日志上传：%@（error = %@）", (isSuccessful ? @"成功" : @"失败"), error);
+#ifdef DEBUG
+                NSLog(@"日志崩溃上传：%@（error = %@）", (isSuccessful ? @"成功" : @"失败"), error);
+#endif
             }];
         }
     }];
@@ -210,8 +175,10 @@ void SYMonitorRead(SYMonitorReadHandle handle)
 /// 获取上传log日志
 - (void)monitorReadWithPage:(NSInteger)page size:(NSInteger)size complete:(void (^)(NSArray <SYServerModel *>*array, NSError *error))complete
 {
-    [self.monitorServe serveReadWithPage:page size:size complete:^(NSArray<SYServerModel *> * _Nonnull array, NSError * _Nonnull error) {
-        NSLog(@"日志记录：%@", array.count <= 0 ? @"没有记录" : [NSString stringWithFormat:@"有 %ld 条记录", array.count]);
+    [SYMonitorServe.share serveReadWithPage:page size:size table:self.config.crashTable complete:^(NSArray<SYServerModel *> * _Nonnull array, NSError * _Nonnull error) {
+#ifdef DEBUG
+        NSLog(@"日志崩溃记录：%@", array.count <= 0 ? @"没有崩溃记录" : [NSString stringWithFormat:@"有 %ld 条崩溃记录", array.count]);
+#endif
         if (complete) {
             complete(array, error);
         }

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SYMonitorCrash : NSObject
 
-- (void)catchCrash;
+void SYMonitorCrashInitialize(void);
 
 @end
 
